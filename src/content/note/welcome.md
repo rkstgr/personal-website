@@ -1,9 +1,11 @@
 ---
-title: Hello, Welcome
-description: An introduction to using the note feature in Astro Cactus
-publishDate: "2024-10-14T11:23:00Z"
+title: Microsoft SQL Server's Bizarre UUID Implementation
+description: A deep dive into Microsoft SQL Server's unusual UUID byte ordering, where they uniquely combine little and mixed endian formats—creating unnecessary complexity for developers.
+publishDate: "2024-08-09T11:23:00Z"
 ---
 
-Hi, Hello. This is an example note feature included with Astro Cactus.
+Microsofts SQL server is a incomprehensible mess of inconsistencies.
 
-They're for shorter, concise "post's" that you'd like to share, they generally don't include headings, but hey, that's entirely up to you.
+Couldn't figure out why the parsing of UUID was not working, turns out they decided to use little endian for the first half, and big endian for the second half.
+
+exactly like no one ever...
