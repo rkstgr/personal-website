@@ -67,8 +67,8 @@ This shift from category-based browsing to intuitive, image-aware search doesn't
 Theory is one thing, but seeing is believing. I've built a live demonstration at [unvail.app](https://unvail.app) where you can experience cross-modal search firsthand. The demo lets you search through approximately half a million real Zalando products—the same massive catalog we discussed earlier.
 
 <div className="image-comparison">
-  ![Zalando search results](./zalando-example.png)
-  ![Unvail search results](./unvail-example.png)
+  ![Zalando search results](./zalando-example3.png)
+  ![Unvail search results](./unvail-example3.png)
 </div>
 
 Unlike Zalando's native search, Unvail uses the AI-powered cross-modal approach we've explored. Try searching for something specific like "90s style baggy cargo pants" or "cozy knit sweater in earth tones" and watch how the system understands and matches your intent with visually similar products.
@@ -79,32 +79,34 @@ For a real eye-opener, try running the same search on Zalando's website yourself
 
 <style jsx>{`
   .image-comparison {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
     margin: 2rem 0;
     background:
       radial-gradient(
         circle at 50% 50%,
-        rgba(0, 0, 0, 0.05) 0%,
-        rgba(0, 0, 0, 0) 70%
+        var(--gradient-from, rgba(0, 0, 0, 0.05)) 0%,
+        var(--gradient-to, rgba(0, 0, 0, 0)) 70%
       );
   }
   .image-comparison img {
-    width: 50%;
+    width: 100%;
     height: auto;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px var(--shadow-color, rgba(0, 0, 0, 0.1));
     transition: transform 0.2s ease;
   }
   .image-comparison img:hover {
     transform: translateY(-2px);
   }
-  @media (max-width: 640px) {
-    .image-comparison {
-      flex-direction: column;
-    }
-    .image-comparison img {
-      width: 100%;
-    }
+
+  :global(.dark) .image-comparison {
+    --gradient-from: rgba(255, 255, 255, 0.05);
+    --gradient-to: rgba(255, 255, 255, 0);
+  }
+
+  :global(.dark) .image-comparison img {
+    --shadow-color: rgba(0, 0, 0, 0.3);
   }
 `}</style>
